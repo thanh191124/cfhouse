@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Ten SP</label>
+    <input type="text" name="tensp"><br>
+    <label for="">Gia SP</label>
+    <input type="number" name="giasp"><br>
+    <label for="">Chi tiet SP</label>
+    <input type="text" name="chitietsp"><br>
+    <label for="">Hinh</label>
+    <input type="file" id="fileInput" onchange="previewFile()">
+    <button onclick="themsanpham()">them</button>
+    <button onclick="capnhat_sanpham()">cap nhat</button>
+    <img id = "img_preview" src="" height="70" width="120"><br>
+    <table border="1">
+      <tbody id="showsanphamadmin"></tbody>
+    </table>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="code/sanpham.js"></script>
+<script src="code/database.js"></script>
+<script src="code/xl_sanpham.js"></script>
+<script>
+    function previewFile(){
+      const preview = document.querySelector("#img_preview");
+      const file = document.querySelector("#fileInput").files[0];
+      const reader  = new FileReader();
+      reader.addEventListener("load",function(){
+        preview.src = reader.result;
+      },false);
+      if(file){
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
